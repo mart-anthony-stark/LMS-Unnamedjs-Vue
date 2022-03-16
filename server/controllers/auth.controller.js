@@ -1,5 +1,8 @@
+const Admin = require("../models/Admin.model");
+
 module.exports = {
-  getAllUsers: (request, response) => {
-    response.send("Users");
+  getAllUsers: async (request, response) => {
+    const admins = await Admin.findById("65a4d");
+    response.send(admins);
   },
 };
