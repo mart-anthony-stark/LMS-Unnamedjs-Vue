@@ -1,5 +1,5 @@
 module.exports = (fn) => (req, res, next) => {
   Promise.resolve(fn(req, res, next)).catch((err) => {
-    res.status(500).json({ msg: err.message });
+    res.code(500).send({ msg: err.message });
   });
 };
