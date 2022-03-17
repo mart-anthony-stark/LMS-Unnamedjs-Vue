@@ -10,4 +10,4 @@ const server = unnamed({
   },
 });
 
-server.combineRouters(require("./routers"));
+server.router(require("./routers"));
