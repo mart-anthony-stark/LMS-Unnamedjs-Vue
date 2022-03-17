@@ -10,5 +10,7 @@ const getAdmins = async (req, res) => {
 };
 module.exports = ({ GET, POST, PUT, PATCH, DELETE }) => {
   GET("/", { beforeEnter: [getAdmins] }, catcher(UserController.getAllUsers));
-  GET("/ASD");
+  GET("/ASD", (req, res) => {
+    res.send("ad");
+  });
 };
