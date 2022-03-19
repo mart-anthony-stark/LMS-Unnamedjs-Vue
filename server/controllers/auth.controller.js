@@ -15,7 +15,11 @@ module.exports = {
     response.send({ admin: admin._doc, token });
   },
 
-  // login: async (req,res)=>{
-  //   const {email, password} =
-  // }
+  login: async (req, res) => {
+    const { email, password } = req.body;
+    const admin = await Admin.findOne({ email });
+    if (!admin) throw "Account not found.";
+
+    res.send("a");
+  },
 };
