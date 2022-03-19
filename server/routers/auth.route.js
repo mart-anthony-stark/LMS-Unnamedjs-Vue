@@ -4,4 +4,5 @@ const Admin = require("../models/Admin.model");
 
 module.exports = ({ GET, POST, PUT, PATCH, DELETE }) => {
   POST("/register", catcher(UserController.register));
+  POST("/login", catcher(UserController.login));
 };
