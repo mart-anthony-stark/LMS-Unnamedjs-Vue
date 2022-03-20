@@ -1,8 +1,10 @@
-const studentController = require('../controllers/student.controller')
+const studentController = require("../controllers/student.controller");
 
-const studentRouter = ({GET, POST, PUT, PATCH,DELETE}) => {
-    GET('/all', studentController.getAllStudents)
-    GET('/:id', studentController.getOneStudent)
-}
+const { catcher } = require("unnamed-js/utils");
 
-module.exports = studentRouter
+const studentRouter = ({ GET, POST, PUT, PATCH, DELETE }) => {
+  GET("/all", catcher(studentController.getAllStudents));
+  GET("/:id", catcher(studentController.getOneStudent));
+};
+
+module.exports = studentRouter;
