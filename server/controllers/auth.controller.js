@@ -4,15 +4,25 @@ const { createToken } = require("../utils/token.util");
 
 module.exports = {
   register: async (request, response) => {
-    const admin = new Admin(request.body);
-    const salt = await bcrypt.genSalt(10);
-    admin.password = await bcrypt.hash(request.body.password, salt);
-    await admin.save();
+    const banned = ["email", "username"];
+    if (Array.isArray(request.body)) {
+      console.log("arr");
+    } else {
+      console.log("obj");
+      banned.forEach((key) => {
+        request.body[key] = undefined;
+      });
+    }
+    // const admin = new Admin(request.body);
+    // const salt = await bcrypt.genSalt(10);
+    // admin.password = await bcrypt.hash(request.body.password, salt);
+    // await admin.save();
 
-    admin._doc.password = undefined;
+    // admin._doc.password = undefined;
 
-    const token = createToken({ admin });
-    response.send({ admin: admin._doc, token });
+    // const token = createToken({ admin });
+    // response.send({ admin: admin._doc, token });
+    response.send(request.body);
   },
 
   login: async (req, res) => {
