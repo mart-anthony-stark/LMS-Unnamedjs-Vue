@@ -11,6 +11,9 @@ module.exports = {
   },
   createStudent: async (req, res) => {
     const student = new Student(req.body);
+    const password = req.body.password
+    student.password = !password && `${req.body.name}`
+    
     await student.save();
     res.send(student);
   },
