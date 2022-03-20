@@ -11,10 +11,21 @@ module.exports = {
   },
   createStudent: async (req, res) => {
     const student = new Student(req.body);
-    const password = req.body.password
-    student.password = !password && `${req.body.name}`
-    
+    const password = req.body.password;
+    student.password = !password && `${req.body.name}`;
+
     await student.save();
+    res.send(student);
+  },
+  updateStudent: async (req, res) => {
+    const student = await Student.findByIdAndUpdate(
+      req.params.id,
+      {
+        $set: req.body,
+      },
+      { new: true }
+    );
+
     res.send(student);
   },
 };
