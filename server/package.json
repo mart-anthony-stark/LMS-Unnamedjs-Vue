@@ -15,6 +15,6 @@
     "dotenv": "^16.0.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.3",
-    "unnamed-js": "^2.0.16"
+    "unnamed-js": "^2.0.18"
   }
 }
