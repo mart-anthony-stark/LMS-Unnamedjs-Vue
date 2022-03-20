@@ -28,4 +28,8 @@ module.exports = {
 
     res.send(student);
   },
+  deleteOne: async (req, res) => {
+    const student = await Student.findByIdAndDelete(req.params.id);
+    res.send(student);
+  },
 };
