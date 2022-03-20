@@ -20,6 +20,11 @@ module.exports = {
     const admin = await Admin.findOne({ email });
     if (!admin) throw "Account not found.";
 
-    res.send("a");
+    const isMatch = await bcrypt.compare(password, admin.password);
+
+    if (!isMatch) throw "Passwords do not match";
+
+    const token = createToken({ admin });
+    res.send({ token });
   },
 };
