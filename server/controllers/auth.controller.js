@@ -25,6 +25,8 @@ module.exports = {
     if (!isMatch) throw "Passwords do not match";
 
     const token = createToken({ admin });
-    res.send({ token });
+
+    admin._doc.password = undefined;
+    res.send({ token, admin: admin._doc });
   },
 };
