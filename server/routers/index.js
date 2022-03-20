@@ -1,5 +1,8 @@
 const routers = [
   {
+    router: require('./home.route')
+  },
+  {
     prefix: "auth",
     router: require("./auth.route"),
   },
